@@ -65,7 +65,10 @@ export interface Config {
   auth: {
     users: UserAuthOperations;
   };
-  blocks: {};
+  blocks: {
+    'movie-night-banner-block': MovieNightBannerBlock;
+    'movie-review-card-block': MovieReviewCardBlock;
+  };
   collections: {
     users: User;
     media: Media;
@@ -87,8 +90,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'landings-side': LandingsSide;
+  };
+  globalsSelect: {
+    'landings-side': LandingsSideSelect<false> | LandingsSideSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -116,6 +123,37 @@ export interface UserAuthOperations {
     email: string;
     password: string;
   };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MovieNightBannerBlock".
+ */
+export interface MovieNightBannerBlock {
+  title: string;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'movie-night-banner-block';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MovieReviewCardBlock".
+ */
+export interface MovieReviewCardBlock {
+  title: string;
+  subtitle: string;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'movie-review-card-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -316,6 +354,54 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landings-side".
+ */
+export interface LandingsSide {
+  id: number;
+  layout?: (MovieNightBannerBlock | MovieReviewCardBlock)[] | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landings-side_select".
+ */
+export interface LandingsSideSelect<T extends boolean = true> {
+  layout?:
+    | T
+    | {
+        'movie-night-banner-block'?: T | MovieNightBannerBlockSelect<T>;
+        'movie-review-card-block'?: T | MovieReviewCardBlockSelect<T>;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MovieNightBannerBlock_select".
+ */
+export interface MovieNightBannerBlockSelect<T extends boolean = true> {
+  title?: T;
+  generateSlug?: T;
+  slug?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MovieReviewCardBlock_select".
+ */
+export interface MovieReviewCardBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  generateSlug?: T;
+  slug?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

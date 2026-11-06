@@ -1,0 +1,15 @@
+.moveNightBanner {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / -1;
+  background-color: orange;
+  margin-block-start: 2rem;
+  align-items: center;
+  padding: 1rem;
+
+  button {
+    padding: 0.5rem;
+    margin-block-start: 2rem;
+    width: 20%;
+  }
+}

@@ -3,8 +3,8 @@ import "./styles.css";
 import Header from "@/components/Header/Header";
 
 export const metadata = {
-  description: "Et starterprosjekt for Payload CMS, bygget med Docker",
-  title: "Payload CMS",
+  description: "En filmklubb-Filmen er slutt. Samtalen begynner",
+  title: "Rulletekst",
 };
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
@@ -15,12 +15,10 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <body>
         <div className="app-container">
           <Header />
-          <main>
-            {children}
-          </main>
+          <main>{children}</main>
           <footer>Footer</footer>
         </div>
       </body>
     </html>
   );
-};
+}
