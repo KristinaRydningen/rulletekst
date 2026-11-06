@@ -11,6 +11,7 @@ import { Media } from "./collections/Media";
 import { MovieNightBannerBlock } from "./blocks/MovieNightBannerBlock";
 import { MovieReviewCardBlock } from "./blocks/MovieReviewCardBlock";
 import { LandingPage } from "./globals/LandingPage";
+import { Article } from "./collections/Article";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -20,7 +21,7 @@ const dirname = path.dirname(filename);
  * Legg innholdssamlinger inn i dette arrayet for å inkludere dem.
  */
 
-const collections: CollectionConfig[] = [Users, Media];
+const collections: CollectionConfig[] = [Users, Media, Article];
 
 /**
  * Globals
