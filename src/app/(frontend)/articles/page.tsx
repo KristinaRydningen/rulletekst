@@ -1,30 +1,35 @@
 import config from "@payload-config";
 import { getPayload } from "payload";
-
-import ArticleCard from "@/components/ArticleContent/ArticleContent";
-import { ArticlePage } from "@/globals/ArticlePage";
+import ArticlePreviewCard from "@/components/ArticlePreviewCard/ArticlePreviewCard";
+import ArticlesGrid from "@/components/ArticlesGrid/ArticlesGrid";
 
 export default async function ArticlesPage() {
   const payload = await getPayload({ config });
-  const articlepage = await payload.findGlobal({
-    slug: "article-page",
+  const articles = await payload.find({
+    collection: "article",
   });
 
-  if (!articlepage || !articlepage.articlePageLayout) {
+  console.log(articles.docs[0].articleText.root.children);
+
+  if (!articles) {
     throw new Error("Noe gikk galt...");
   }
 
   return (
     <>
-      {articlepage.articlePageLayout.map((block) => {
-        return (
-          <ArticleCard
-            title={block.title}
-            subtitle={block.subtitle}
-            articleText={block.articleText}
-          />
-        );
-      })}
+      <ArticlesGrid>
+        {articles.docs.map((block) => {
+          return (
+            <ArticlePreviewCard
+              key={block.id}
+              title={block.title}
+              subtitle={block.subtitle}
+              author={block.createdAt}
+              url={block.slug}
+            />
+          );
+        })}
+      </ArticlesGrid>
     </>
   );
 }
