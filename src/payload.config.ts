@@ -12,6 +12,8 @@ import { MovieNightBannerBlock } from "./blocks/MovieNightBannerBlock";
 import { MovieReviewCardBlock } from "./blocks/MovieReviewCardBlock";
 import { LandingPage } from "./globals/LandingPage";
 import { Article } from "./collections/Article";
+import { MovieReviewBlock } from "./blocks/MovieReviewBlock";
+import { Review } from "./collections/Reviews";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -21,7 +23,7 @@ const dirname = path.dirname(filename);
  * Legg innholdssamlinger inn i dette arrayet for å inkludere dem.
  */
 
-const collections: CollectionConfig[] = [Users, Media, Article];
+const collections: CollectionConfig[] = [Users, Media, Article, Review];
 
 /**
  * Globals
@@ -33,7 +35,11 @@ const globals: GlobalConfig[] = [LandingPage];
  * Blokker
  * Legg blokker inn i dette arrayet for å inkludere dem.
  */
-const blocks: Block[] = [MovieNightBannerBlock, MovieReviewCardBlock];
+const blocks: Block[] = [
+  MovieNightBannerBlock,
+  MovieReviewCardBlock,
+  MovieReviewBlock,
+];
 
 /**
  * Payload-konfigurasjon

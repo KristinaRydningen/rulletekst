@@ -1,7 +1,6 @@
 import ArticleContent from "@/components/ArticleContent/ArticleContent";
 import { getPayload } from "payload";
 import config from "@payload-config";
-import { Article } from "@/collections/Article";
 import { notFound } from "next/navigation";
 
 type spesificArticleProps = {

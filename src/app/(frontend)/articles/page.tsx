@@ -1,7 +1,7 @@
 import config from "@payload-config";
 import { getPayload } from "payload";
-import ArticlePreviewCard from "@/components/ArticlePreviewCard/ArticlePreviewCard";
-import ArticlesGrid from "@/components/ArticlesGrid/ArticlesGrid";
+import PreviewCard from "@/components/PreviewCard/PreviewCard";
+import Grid from "@/components/Grid/Grid";
 
 export default async function ArticlesPage() {
   const payload = await getPayload({ config });
@@ -9,27 +9,29 @@ export default async function ArticlesPage() {
     collection: "article",
   });
 
-  console.log(articles.docs[0].articleText.root.children);
-
   if (!articles) {
     throw new Error("Noe gikk galt...");
   }
 
+  if (articles.docs.length === 0) {
+    return <p>Det finnes ingen artikler enda.</p>;
+  }
+
   return (
     <>
-      <ArticlesGrid>
+      <Grid>
         {articles.docs.map((block) => {
           return (
-            <ArticlePreviewCard
+            <PreviewCard
               key={block.id}
               title={block.title}
               subtitle={block.subtitle}
               author={block.createdAt}
-              url={block.slug}
+              url={`articles/${block.slug}`}
             />
           );
         })}
-      </ArticlesGrid>
+      </Grid>
     </>
   );
 }

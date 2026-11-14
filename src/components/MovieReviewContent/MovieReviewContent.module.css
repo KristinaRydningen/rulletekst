@@ -1,0 +1,36 @@
+.factBox {
+  display: flex;
+  flex-direction: column;
+  border: solid 2px gray;
+  margin-inline-end: 1rem;
+  padding: 1rem;
+  line-height: 2;
+  width: 50%;
+}
+
+.reviewContentContainer {
+  display: flex;
+  flex-direction: row;
+  margin: 2rem;
+}
+
+.reviewTextContainer {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+}
+
+.factBoxTitleContainer {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+
+  img {
+    width: 2rem;
+    margin-inline-start: 0.5rem;
+  }
+}
+
+.richtext {
+  padding-block: 1.5rem;
+}

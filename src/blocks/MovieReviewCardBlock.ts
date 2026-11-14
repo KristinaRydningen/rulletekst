@@ -9,19 +9,10 @@ export const MovieReviewCardBlock: Block = {
   },
   fields: [
     {
-      name: "title",
-      type: "text",
-      label: "Anmeldelsens tittel",
+      name: "review",
+      type: "relationship",
+      relationTo: "review",
       required: true,
-      unique: true,
     },
-    {
-      name: "subtitle",
-      type: "text",
-      label: "Pirrende undertittel",
-      required: true,
-      unique: true,
-    },
-    slugField(),
   ],
 };

@@ -1,4 +1,4 @@
-.articlesGrid {
+.grid {
   display: grid;
   margin: 1rem;
   gap: 1rem;
@@ -6,7 +6,7 @@
 }
 
 @media (max-width: 600px) {
-  .articlesGrid {
+  .grid {
     grid-template-columns: 1fr;
   }
 }

@@ -68,11 +68,13 @@ export interface Config {
   blocks: {
     'movie-night-banner-block': MovieNightBannerBlock;
     'movie-review-card-block': MovieReviewCardBlock;
+    'movie-review-block': MovieReviewBlock;
   };
   collections: {
     users: User;
     media: Media;
     article: Article;
+    review: Review;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -83,6 +85,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     article: ArticleSelect<false> | ArticleSelect<true>;
+    review: ReviewSelect<false> | ReviewSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -146,16 +149,52 @@ export interface MovieNightBannerBlock {
  * via the `definition` "MovieReviewCardBlock".
  */
 export interface MovieReviewCardBlock {
+  review: number | Review;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'movie-review-card-block';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "review".
+ */
+export interface Review {
+  id: number;
   title: string;
-  subtitle: string;
+  subtitle?: string | null;
+  dice: '1' | '2' | '3' | '4' | '5' | '6';
+  director: string;
+  length: number;
+  agelimit: number;
+  actors?:
+    | {
+        name: string;
+        id?: string | null;
+      }[]
+    | null;
+  text: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  author: number | User;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
   generateSlug?: boolean | null;
   slug: string;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'movie-review-card-block';
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -163,6 +202,7 @@ export interface MovieReviewCardBlock {
  */
 export interface User {
   id: number;
+  name: string;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -182,6 +222,21 @@ export interface User {
     | null;
   password?: string | null;
   collection: 'users';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MovieReviewBlock".
+ */
+export interface MovieReviewBlock {
+  title: string;
+  dice: ('1' | '2')[];
+  director: string;
+  length: number;
+  agelimit: number;
+  actors: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'movie-review-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -209,7 +264,6 @@ export interface Media {
 export interface Article {
   id: number;
   title: string;
-  slug: string;
   subtitle: string;
   articleText: {
     root: {
@@ -226,6 +280,11 @@ export interface Article {
     };
     [k: string]: unknown;
   };
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -264,6 +323,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'article';
         value: number | Article;
+      } | null)
+    | ({
+        relationTo: 'review';
+        value: number | Review;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -312,6 +375,7 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  name?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -354,9 +418,34 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface ArticleSelect<T extends boolean = true> {
   title?: T;
-  slug?: T;
   subtitle?: T;
   articleText?: T;
+  generateSlug?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "review_select".
+ */
+export interface ReviewSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  dice?: T;
+  director?: T;
+  length?: T;
+  agelimit?: T;
+  actors?:
+    | T
+    | {
+        name?: T;
+        id?: T;
+      };
+  text?: T;
+  author?: T;
+  generateSlug?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -441,10 +530,7 @@ export interface MovieNightBannerBlockSelect<T extends boolean = true> {
  * via the `definition` "MovieReviewCardBlock_select".
  */
 export interface MovieReviewCardBlockSelect<T extends boolean = true> {
-  title?: T;
-  subtitle?: T;
-  generateSlug?: T;
-  slug?: T;
+  review?: T;
   id?: T;
   blockName?: T;
 }
