@@ -1,10 +1,11 @@
 .MovieReviewCard {
   display: flex;
   flex-direction: column;
-  background-color: gray;
+  border: solid 2px gray;
   padding: 1rem;
 
   button {
-    width: 30%;
+    width: 80%;
+    margin-block-start: 1rem;
   }
 }

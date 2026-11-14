@@ -1,4 +1,4 @@
-import { type CollectionConfig } from "payload";
+import { type CollectionConfig, slugField } from "payload";
 
 export const Article: CollectionConfig = {
   slug: "article",
@@ -13,13 +13,6 @@ export const Article: CollectionConfig = {
       required: true,
     },
     {
-      name: "slug",
-      label: "URL-navn",
-      type: "text",
-      required: true,
-      unique: true,
-    },
-    {
       name: "subtitle",
       type: "text",
       label: "Artikkelens undertittel",
@@ -31,5 +24,8 @@ export const Article: CollectionConfig = {
       label: "Artikkelens innhold",
       required: true,
     },
+    slugField({
+      fieldToUse: "title",
+    }),
   ],
 };

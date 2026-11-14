@@ -1,4 +1,4 @@
-import { Block, slugField } from "payload";
+import { Block } from "payload";
 
 export const ArticleCardBlock: Block = {
   slug: "article-block",
