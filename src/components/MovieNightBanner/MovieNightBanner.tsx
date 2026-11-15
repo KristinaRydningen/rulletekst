@@ -1,4 +1,5 @@
 import styles from "./MovieNightBanner.module.css";
+import Link from "next/link";
 
 export type MovieNightBannerProps = {
   title: string;
@@ -10,7 +11,9 @@ export default function MovieNightBanner({ title }: MovieNightBannerProps) {
       <h3>Ukens filmkveld</h3>
       <h1>{title}</h1>
       <img src="" alt="" />
-      <button>Meld meg på!</button>
+      <Link href="/movienight" className={styles.MovieNightButton}>
+        Meld meg på!
+      </Link>
     </article>
   );
 }

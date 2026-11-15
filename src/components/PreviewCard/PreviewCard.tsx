@@ -6,6 +6,7 @@ export type PreviewCardProps = {
   subtitle: string;
   author: string;
   url: string;
+  date: string;
 };
 
 export default function PreviewCard({
@@ -13,6 +14,7 @@ export default function PreviewCard({
   subtitle,
   author,
   url,
+  date,
 }: PreviewCardProps) {
   return (
     <div className={styles.PreviewCard}>
@@ -21,7 +23,8 @@ export default function PreviewCard({
       <Link href={url} className={styles.lesMer}>
         Les mer
       </Link>
-      <p>{author}</p>
+      <p className={styles.italic}>{`Skrevet av ${author}`}</p>
+      <p> {new Date(date).toLocaleDateString("nb-NO")}</p>
     </div>
   );
 }

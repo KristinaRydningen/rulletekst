@@ -1,0 +1,46 @@
+.footer {
+  padding: 1.5rem;
+  padding-inline: 2rem 4rem;
+  border-top: 2rem solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .logoDisplay {
+    display: flex;
+    flex-direction: column;
+    a {
+      text-decoration: none;
+      color: black;
+      font-weight: 600;
+    }
+  }
+
+  .footerLogo {
+    font-size: 50;
+  }
+
+  .footerLinksDisplay {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.redSlogan {
+  color: red;
+}
+
+.sloganContainer {
+  display: flex;
+  flex-direction: row;
+  white-space: pre-wrap;
+}

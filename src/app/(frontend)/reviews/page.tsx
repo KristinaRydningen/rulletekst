@@ -9,18 +9,27 @@ export default async function MovieReviewPage() {
   });
 
   return (
-    <Grid>
-      {reviews.docs.map((review) => {
-        return (
-          <PreviewCard
-            key={review.id}
-            title={review.title}
-            subtitle={review.subtitle ?? ""}
-            author={review.createdAt}
-            url={`reviews/${review.slug}`}
-          />
-        );
-      })}
-    </Grid>
+    <>
+      <h1>Anmeldelser</h1>
+      <Grid>
+        {reviews.docs.map((review) => {
+          const authorName =
+            typeof review.author === "object" && review.author !== null
+              ? review.author.name
+              : "Skrevet av Rulletekst.no";
+
+          return (
+            <PreviewCard
+              key={review.id}
+              title={review.title}
+              subtitle={review.subtitle ?? ""}
+              author={authorName}
+              url={`reviews/${review.slug}`}
+              date={review.createdAt}
+            />
+          );
+        })}
+      </Grid>
+    </>
   );
 }

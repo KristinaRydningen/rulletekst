@@ -280,6 +280,7 @@ export interface Article {
     };
     [k: string]: unknown;
   };
+  author: number | User;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
@@ -420,6 +421,7 @@ export interface ArticleSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
   articleText?: T;
+  author?: T;
   generateSlug?: T;
   slug?: T;
   updatedAt?: T;

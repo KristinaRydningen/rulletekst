@@ -42,6 +42,7 @@ export default async function HomePage() {
                   subtitle={block.review.subtitle ?? ""}
                   author={authorName}
                   url={`/reviews/${block.review.slug}`}
+                  date={block.review.createdAt}
                 />
               </Grid>
             );

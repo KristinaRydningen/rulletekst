@@ -24,6 +24,13 @@ export const Article: CollectionConfig = {
       label: "Artikkelens innhold",
       required: true,
     },
+    {
+      name: "author",
+      type: "relationship",
+      relationTo: "users",
+      label: "Skrevet av",
+      required: true,
+    },
     slugField({
       fieldToUse: "title",
     }),

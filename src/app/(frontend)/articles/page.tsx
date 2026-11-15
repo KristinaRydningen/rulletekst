@@ -7,6 +7,7 @@ export default async function ArticlesPage() {
   const payload = await getPayload({ config });
   const articles = await payload.find({
     collection: "article",
+    depth: 1,
   });
 
   if (!articles) {
@@ -19,15 +20,21 @@ export default async function ArticlesPage() {
 
   return (
     <>
+      <h1>Artikler</h1>
       <Grid>
         {articles.docs.map((block) => {
+          const authorName =
+            typeof block.author === "object" && block.author !== null
+              ? block.author.name || "Ukjent forfatter"
+              : "Ukjent forfatter";
           return (
             <PreviewCard
               key={block.id}
               title={block.title}
               subtitle={block.subtitle}
-              author={block.createdAt}
+              author={authorName}
               url={`articles/${block.slug}`}
+              date={block.createdAt}
             />
           );
         })}

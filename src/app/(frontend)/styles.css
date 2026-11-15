@@ -47,43 +47,6 @@ body {
         margin-block-start: 1.5em;
       }
     }
-
-    footer {
-      padding: 1.5rem;
-      padding-inline: 2rem 4rem;
-      border-top: 2rem solid black;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-
-      .logo-display {
-        display: flex;
-        flex-direction: column;
-        a {
-          text-decoration: none;
-          color: black;
-          font-weight: 600;
-        }
-      }
-
-      .footer-logo {
-        font-size: 50;
-      }
-
-      .footer-links-display {
-        display: flex;
-        flex-direction: column;
-
-        a {
-          text-decoration: none;
-          color: black;
-        }
-
-        a:hover {
-          text-decoration: underline;
-        }
-      }
-    }
   }
 }
 
@@ -94,13 +57,4 @@ body {
 .app-container {
   background-color: white;
   min-height: 50vh;
-}
-
-code {
-  font-family: system-monospace, monospace;
-  font-size: 0.9em;
-  color: cyan;
-  background-color: rgb(0 0 0 / 90%);
-  display: inline-block;
-  padding: 0.1em 0.5em;
 }

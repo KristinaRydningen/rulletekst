@@ -1,17 +1,24 @@
 import Link from "next/link";
-import styles from "./footer.module.css";
+import styles from "./Footer.module.css";
 
 export default function Footer() {
   return (
     <>
-      <footer>
-        <div className="logo-display">
-          <Link className="footer-logo" href="/">
+      <footer className={styles.footer}>
+        <div className={styles.logoDisplay}>
+          <Link className={styles.footerLogo} href="/">
             Rulletekst
           </Link>
-          <Link href="/">Filmen er slutt. Samtalen begynner</Link>
+          <Link href="/">
+            <p className="sloganContainer">
+              <span className="redSlogan">Filmen</span>
+              {" er slutt. "}
+              <span className="redSlogan">Samtalen</span>
+              {" begynner "}
+            </p>
+          </Link>
         </div>
-        <div className="footer-links-display">
+        <div className={styles.footerLinksDisplay}>
           <h3>Utforsk</h3>
           <Link href="/">Forside</Link>
           <Link href="/movienights">Filmkvelder</Link>

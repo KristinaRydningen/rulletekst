@@ -8,7 +8,14 @@ export default function Header() {
         <Link className="logo" href="/">
           Rulletekst
         </Link>
-        <Link href="/">Filmen er slutt. Samtalen begynner</Link>
+        <Link href="/">
+          <p className="sloganContainer">
+            <span className="redSlogan">Filmen</span>
+            {" er slutt. "}
+            <span className="redSlogan">Samtalen</span>
+            {" begynner "}
+          </p>
+        </Link>
       </div>
       <nav>
         <Link href="/movienight">Filmkvelder</Link>

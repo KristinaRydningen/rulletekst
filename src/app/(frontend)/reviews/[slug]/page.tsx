@@ -43,6 +43,7 @@ export default async function SpesificReview({ params }: SpesificReviewProps) {
     <>
       <MovieReviewContent
         title={review.title}
+        subtitle={review.subtitle ?? ""}
         director={review.director}
         dice={Number(review.dice)}
         length={review.length}
