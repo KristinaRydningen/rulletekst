@@ -19,9 +19,22 @@ export const Article: CollectionConfig = {
       required: true,
     },
     {
+      name: "thumbnail",
+      type: "upload",
+      label: "Oversiktsbilde",
+      relationTo: "media",
+    },
+    {
       name: "articleText",
       type: "richText",
       label: "Artikkelens innhold",
+      required: true,
+    },
+    {
+      name: "author",
+      type: "relationship",
+      relationTo: "users",
+      label: "Skrevet av",
       required: true,
     },
     slugField({

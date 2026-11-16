@@ -21,7 +21,17 @@ export default async function HomePage() {
       {homepage.layout.map((block) => {
         switch (block.blockType) {
           case "movie-night-banner-block": {
-            return <MovieNightBanner key={block.id} title={block.title} />;
+            const imgMovieNightBanner =
+              typeof block.thumbnail === "object" && block.thumbnail !== null
+                ? block.thumbnail.url
+                : undefined;
+            return (
+              <MovieNightBanner
+                key={block.id}
+                title={block.title}
+                img={imgMovieNightBanner ?? undefined}
+              />
+            );
           }
           case "movie-review-card-block": {
             if (typeof block.review !== "object" || block.review === null) {
@@ -42,6 +52,7 @@ export default async function HomePage() {
                   subtitle={block.review.subtitle ?? ""}
                   author={authorName}
                   url={`/reviews/${block.review.slug}`}
+                  date={block.review.createdAt}
                 />
               </Grid>
             );

@@ -1,9 +1,10 @@
 .PreviewCard {
-  border: 0.5rem dotted gray;
+  border: 4px dashed black;
   width: 15rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  line-height: 1.5;
 }
 
 .lesMer {
@@ -11,11 +12,14 @@
   background-color: black;
   border: none;
   color: white;
-  font-weight: 600;
+  font-weight: 500;
   font-family: inherit;
   width: 50%;
+  text-decoration: none;
+  margin-block-start: 2rem;
+}
 
-  a {
-    text-decoration: none;
-  }
+.italic {
+  font-style: italic;
+  margin-block-start: 0.5rem;
 }

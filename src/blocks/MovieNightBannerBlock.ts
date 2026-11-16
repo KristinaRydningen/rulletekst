@@ -15,6 +15,12 @@ export const MovieNightBannerBlock: Block = {
       required: true,
       unique: true,
     },
+    {
+      name: "thumbnail",
+      type: "upload",
+      label: "Forsidebilde",
+      relationTo: "media",
+    },
     slugField(),
   ],
 };

@@ -135,6 +135,7 @@ export interface UserAuthOperations {
  */
 export interface MovieNightBannerBlock {
   title: string;
+  thumbnail?: (number | null) | Media;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
@@ -143,6 +144,25 @@ export interface MovieNightBannerBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'movie-night-banner-block';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: number;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -162,6 +182,7 @@ export interface Review {
   id: number;
   title: string;
   subtitle?: string | null;
+  thumbnail?: (number | null) | Media;
   dice: '1' | '2' | '3' | '4' | '5' | '6';
   director: string;
   length: number;
@@ -240,31 +261,13 @@ export interface MovieReviewBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: number;
-  alt: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "article".
  */
 export interface Article {
   id: number;
   title: string;
   subtitle: string;
+  thumbnail?: (number | null) | Media;
   articleText: {
     root: {
       type: string;
@@ -280,6 +283,7 @@ export interface Article {
     };
     [k: string]: unknown;
   };
+  author: number | User;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
@@ -419,7 +423,9 @@ export interface MediaSelect<T extends boolean = true> {
 export interface ArticleSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
+  thumbnail?: T;
   articleText?: T;
+  author?: T;
   generateSlug?: T;
   slug?: T;
   updatedAt?: T;
@@ -432,6 +438,7 @@ export interface ArticleSelect<T extends boolean = true> {
 export interface ReviewSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
+  thumbnail?: T;
   dice?: T;
   director?: T;
   length?: T;
@@ -520,6 +527,7 @@ export interface LandingsSideSelect<T extends boolean = true> {
  */
 export interface MovieNightBannerBlockSelect<T extends boolean = true> {
   title?: T;
+  thumbnail?: T;
   generateSlug?: T;
   slug?: T;
   id?: T;

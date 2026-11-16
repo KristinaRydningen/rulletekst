@@ -7,9 +7,16 @@
   align-items: center;
   padding: 1rem;
 
-  button {
-    padding: 0.5rem;
-    margin-block-start: 2rem;
-    width: 20%;
+  img {
+    width: 10rem;
   }
+}
+
+.MovieNightButton {
+  padding: 0.5rem;
+  margin-block-start: 2rem;
+  width: 20%;
+  border: solid 2px black;
+  text-decoration: none;
+  color: black;
 }

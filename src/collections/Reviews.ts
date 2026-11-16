@@ -22,6 +22,12 @@ export const Review: CollectionConfig = {
       label: "Undertittel",
     },
     {
+      name: "thumbnail",
+      type: "upload",
+      label: "Forsidebilde",
+      relationTo: "media",
+    },
+    {
       name: "dice",
       type: "select",
       label: "Terningkast",
