@@ -27,6 +27,11 @@ export default async function ArticlesPage() {
             typeof block.author === "object" && block.author !== null
               ? block.author.name || "Ukjent forfatter"
               : "Ukjent forfatter";
+          const imageUrl =
+            typeof block.thumbnail === "object" && block.thumbnail !== null
+              ? block.thumbnail.url
+              : undefined;
+
           return (
             <PreviewCard
               key={block.id}
@@ -35,6 +40,7 @@ export default async function ArticlesPage() {
               author={authorName}
               url={`articles/${block.slug}`}
               date={block.createdAt}
+              img={imageUrl ?? undefined}
             />
           );
         })}

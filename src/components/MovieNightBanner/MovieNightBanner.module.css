@@ -6,6 +6,10 @@
   margin-block-start: 2rem;
   align-items: center;
   padding: 1rem;
+
+  img {
+    width: 10rem;
+  }
 }
 
 .MovieNightButton {

@@ -17,7 +17,10 @@ export default async function MovieReviewPage() {
             typeof review.author === "object" && review.author !== null
               ? review.author.name
               : "Skrevet av Rulletekst.no";
-
+          const img =
+            typeof review.thumbnail === "object" && review.thumbnail !== null
+              ? review.thumbnail.url
+              : undefined;
           return (
             <PreviewCard
               key={review.id}
@@ -26,6 +29,7 @@ export default async function MovieReviewPage() {
               author={authorName}
               url={`reviews/${review.slug}`}
               date={review.createdAt}
+              img={img ?? undefined}
             />
           );
         })}

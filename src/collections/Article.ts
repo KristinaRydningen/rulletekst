@@ -19,6 +19,12 @@ export const Article: CollectionConfig = {
       required: true,
     },
     {
+      name: "thumbnail",
+      type: "upload",
+      label: "Oversiktsbilde",
+      relationTo: "media",
+    },
+    {
       name: "articleText",
       type: "richText",
       label: "Artikkelens innhold",

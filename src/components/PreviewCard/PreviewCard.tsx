@@ -7,11 +7,13 @@ export type PreviewCardProps = {
   author: string;
   url: string;
   date: string;
+  img?: string;
 };
 
 export default function PreviewCard({
   title,
   subtitle,
+  img,
   author,
   url,
   date,
@@ -20,6 +22,7 @@ export default function PreviewCard({
     <div className={styles.PreviewCard}>
       <h3>{title}</h3>
       <p>{subtitle}</p>
+      <img src={`${img}`} alt="" />
       <Link href={url} className={styles.lesMer}>
         Les mer
       </Link>
